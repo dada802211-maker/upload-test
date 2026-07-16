@@ -3,11 +3,27 @@ table {
   width: 100%;
 }
 
-th, td {
+th,
+td {
   border: 1px solid #ccc;
   padding: 8px;
 }
 
 button {
   margin-right: 8px;
+}
+
+.file-link {
+  color: #2563eb;
+  text-decoration: underline;
+  display: inline-block;
+  text-decoration: none;
+  padding: .6px 8px;
+  margin-right: 8px;
+  border: 1px solid #2563eb;
+  border-radius: 4px;
+}
+
+.file-link:hover {
+  color: #1d4ed8;
 }

@@ -39,13 +39,13 @@ function UploadHistory({ reload }: { reload: number }) {
     fetchUploads();
   };
 
-  const handleDownload = (filePath: string, fileName: string) => {
-    const url = `http://localhost/upload-test/back/uploads/zips/${filePath}`;
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = fileName;
-    a.click();
-  };
+  // const handleDownload = (filePath: string, fileName: string) => {
+  //   const url = `http://localhost/upload-test/back/uploads/zips/${filePath}`;
+  //   const a = document.createElement("a");
+  //   a.href = url;
+  //   a.download = fileName;
+  //   a.click();
+  // };
 
   if (loading) return <p>Loading...</p>;
 
@@ -67,16 +67,17 @@ function UploadHistory({ reload }: { reload: number }) {
         <tbody>
           {uploads.map((item) => (
             <tr key={item.id}>
-              <td>{item.file_name}</td>
+              <td>
+                {item.file_name}
+              </td>
               <td>{item.created_at}</td>
               <td>
-                <button
-                  onClick={() =>
-                    handleDownload(item.file_path, item.file_name)
-                  }
+                <a
+                  className="file-link"
+                  href={`http://localhost/upload-test/back/download.php?file=${item.file_path}&name=${encodeURIComponent(item.file_name)}`}
                 >
                   ダウンロード
-                </button>
+                </a>
 
                 <button onClick={() => handleDelete(item.id)}>
                   削除
